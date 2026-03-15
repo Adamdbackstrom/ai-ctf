@@ -1,6 +1,6 @@
 # PROMPT//CTF
 
-Intern CTF-plattform för prompt injection och LLM-säkerhet.
+CTF-spel för prompt injection och LLM-säkerhet.
 
 ## Prerequisites
 
@@ -22,8 +22,6 @@ ai-ctf/
     index.html       — Hela frontenden i en fil
   README.md
 ```
-
-
 
 ## Starta
 
