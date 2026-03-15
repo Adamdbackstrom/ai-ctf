@@ -70,20 +70,6 @@ python3 -m http.server 3000
 - Sätt `OPEN_ACCESS = False` i `main.py` och fyll på `ALLOWED_IPS` för att begränsa åtkomst till kända IPs
 - Kör **inte** med `0.0.0.0` på publikt nätverk
 
-## Challenges
-
-| # | Titel | Guardrail | Poäng | Multi-turn |
-|---|-------|-----------|-------|------------|
-| 1 | Naiv assistent | Ingen | 100 | Nej |
-| 2 | Receptionist | Ingen | 200 | Nej |
-| 3 | Kundtjänst | Ingen | 300 | Nej |
-| 4 | Ordfilter | Wordlist | 400 | Nej |
-| 5 | LLM Guardrail | LLM-validering | 1000 | Nej |
-| 6 | HR-boten | LLM-validering | 300 | Nej |
-| 7 | Multi-turn: IT-supporten | Ingen | 500 | Ja |
-| 8 | Pipeline-agenten | Wordlist | 600 | Nej |
-| 9 | Memory Poison | Ingen | 350 | Ja |
-
 
 ## Lägg till fler challenges
 
