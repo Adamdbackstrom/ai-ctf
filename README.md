@@ -35,7 +35,7 @@ Skapa filen `backend/.env`:
 ANTHROPIC_API_KEY=din-nyckel-här
 ```
 
-### 1. Backend
+### 2. Backend
 
 Första gången:
 
@@ -55,7 +55,7 @@ source .venv/bin/activate
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-### 2. Frontend
+### 3. Frontend
 
 ```bash
 cd frontend
