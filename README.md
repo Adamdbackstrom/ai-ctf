@@ -84,9 +84,11 @@ Redigera `CHALLENGES`-dicten i `main.py`. Varje challenge behöver:
     "blocked_words": ["ord1", "ord2"],
     # Om guardrail = "llm":
     "guardrail_prompt": "Instruktioner till guardrail-LLM:en. Innehåller {input}.",
+```
+
 # PROMPT//CTF
 Intern CTF-plattform för prompt injection och LLM-säkerhet.
-```
+
 ## Prerequisites
 - Python 3.11+ (kontrollera med `python3 --version`)
 - uv — pakethanterare (`curl -LsSf https://astral.sh/uv/install.sh | sh`)
