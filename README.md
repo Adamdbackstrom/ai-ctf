@@ -68,7 +68,7 @@ python3 -m http.server 3000
 
 ## Lägg till fler challenges
 Redigera `CHALLENGES`-dicten i `main.py`. Varje challenge behöver:
-```python
+
 "7": {
     "id": "7",
     "title": "Titel",
