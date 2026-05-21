@@ -68,7 +68,7 @@ python3 -m http.server 3000
 
 ## Lägg till fler challenges
 Redigera `CHALLENGES`-dicten i `main.py`. Varje challenge behöver:
-
+``` json
 "7": {
     "id": "7",
     "title": "Titel",
@@ -86,7 +86,7 @@ Redigera `CHALLENGES`-dicten i `main.py`. Varje challenge behöver:
     "guardrail_prompt": "Instruktioner till guardrail-LLM:en. Innehåller {input}.",
 # PROMPT//CTF
 Intern CTF-plattform för prompt injection och LLM-säkerhet.
-
+```
 ## Prerequisites
 - Python 3.11+ (kontrollera med `python3 --version`)
 - uv — pakethanterare (`curl -LsSf https://astral.sh/uv/install.sh | sh`)
