@@ -146,7 +146,7 @@
   .challenge-card:hover { border-color: var(--green); box-shadow: 0 0 20px rgba(0,255,136,0.1); }
   .challenge-card:hover::before { opacity: 1; }
   .challenge-card.solved { border-color: rgba(0,255,136,0.4); background: rgba(0,255,136,0.04); }
-  .challenge-card.solved::after { content: '✓ SOLVED'; position: absolute; top: 12px; right: 12px; font-size: 10px; color: var(--green); letter-spacing: 0.1em; }
+  .challenge-card.solved::after { content: '✓ KLARAT'; position: absolute; top: 12px; right: 12px; font-size: 10px; color: var(--green); letter-spacing: 0.1em; }
   .card-difficulty { font-size: 10px; letter-spacing: 0.15em; margin-bottom: 8px; }
   .diff-trivial { color: var(--green2); }
   .diff-easy { color: var(--amber); }
@@ -250,35 +250,34 @@
 <div id="app">
   <header>
     <div class="logo">PROMPT<span>//</span>CTF <span class="blink">_</span></div>
-    <div class="tagline">Internal Prompt Injection Challenge Platform</div>
+    <div class="tagline">Intern Prompt Injection Utbildningsplattform</div>
   </header>
 
   <!-- LOGIN -->
   <div id="login-screen">
     <div class="login-box">
-      <h2>&gt; IDENTIFY YOURSELF</h2>
       <div class="status-line" id="login-status">Ange ditt användarnamn för att börja</div>
       <div class="prompt-line">
         <span class="prompt-symbol">&gt;</span>
-        <input type="text" id="username-input" placeholder="username" maxlength="30" autocomplete="off"/>
+        <input type="text" id="username-input" placeholder="Namn" maxlength="30" autocomplete="off"/>
       </div>
-      <button class="btn" onclick="login()">CONNECT &rarr;</button>
+      <button class="btn" onclick="login()">STARTA &rarr;</button>
     </div>
   </div>
 
   <!-- MAIN -->
   <div id="main-screen">
     <div class="top-bar">
-      <div class="user-badge">// logged in as <span id="display-username"></span></div>
+      <div class="user-badge">// inloggad som <span id="display-username"></span></div>
       <div style="display:flex;gap:8px">
-        <button class="btn btn-sm btn-amber" onclick="loadScoreboard()">SCOREBOARD</button>
-        <button class="btn btn-sm btn-red" onclick="logout()">DISCONNECT</button>
+        <button class="btn btn-sm btn-amber" onclick="loadScoreboard()">RESULTATLISTA</button>
+        <button class="btn btn-sm btn-red" onclick="logout()">KOPPLA FRÅN</button>
       </div>
     </div>
 
     <div class="tabs">
-      <div class="tab active" onclick="showTab('challenges')">CHALLENGES</div>
-      <div class="tab" onclick="showTab('scoreboard')">SCOREBOARD</div>
+      <div class="tab active" onclick="showTab('challenges')">UTMANINGAR</div>
+      <div class="tab" onclick="showTab('scoreboard')">RESULTATLISTA</div>
     </div>
 
     <!-- Challenges tab -->
@@ -286,9 +285,9 @@
       <div id="challenges-grid" class="challenges-grid"></div>
       <div id="attack-panel">
         <div class="panel-header">
-          <span class="back-btn" onclick="closeAttack()">&larr; BACK</span>
-          <button id="reset-session-btn" class="btn btn-sm btn-red" style="display:none" onclick="resetSession()">RESET SESSION</button>
-          <button id="reset-session-btn" class="btn btn-sm btn-red" style="display:none" onclick="resetSession()">RESET SESSION</button>
+          <span class="back-btn" onclick="closeAttack()">&larr; TILLBAKA</span>
+          <button id="reset-session-btn" class="btn btn-sm btn-red" style="display:none" onclick="resetSession()">ÅTERSTÄLL SESSION</button>
+          <button id="reset-session-btn" class="btn btn-sm btn-red" style="display:none" onclick="resetSession()">ÅTERSTÄLL SESSION</button>
           <span class="panel-title" id="panel-title"></span>
           <span id="panel-guardrail"></span>
         </div>
@@ -298,32 +297,36 @@
             <div class="tdot t-red"></div>
             <div class="tdot t-amber"></div>
             <div class="tdot t-green"></div>
-            <span style="margin-left:8px">TARGET LLM</span>
+            <span style="margin-left:8px">ATTACKERA LLM</span>
           </div>
           <div class="terminal-body">
             <div class="output-area" id="output-area">
-              <div class="msg-system">// Skriv din attack prompt nedan och tryck SEND.</div>
+              <div class="msg-system">// Skriv din attack prompt nedan och tryck SKICKA.</div>
             </div>
             <div class="input-area">
               <textarea id="attack-input" placeholder="Skriv din attack prompt..." rows="3"></textarea>
-              <button class="btn btn-sm" id="send-btn" onclick="sendAttack()">SEND</button>
+              <button class="btn btn-sm" id="send-btn" onclick="sendAttack()">SKICKA</button>
             </div>
           </div>
         </div>
         <div class="flag-section">
-          <h4>&gt; SUBMIT FLAG</h4>
+          <h4>&gt; SKRIV FLAGGA</h4>
           <div class="flag-input-row">
             <input type="text" class="flag-input" id="flag-input" placeholder="..."/>
-            <button class="btn btn-sm btn-amber" onclick="submitFlag()">SUBMIT</button>
+            <button class="btn btn-sm btn-amber" onclick="submitFlag()">SKICKA IN</button>
           </div>
           <div id="flag-result" style="margin-top:8px;font-size:12px"></div>
+        </div>
+        <div id="explanation-box" style="display:none; border: 1px solid rgba(0,255,136,0.3); background: rgba(0,255,136,0.05); border-radius: 4px; padding: 16px; margin-top: 12px;">
+          <h4 style="font-family: var(--display); font-size: 11px; color: var(--green); letter-spacing: 0.15em; margin-bottom: 10px;">&gt; FÖRKLARING</h4>
+          <div id="explanation-text" style="font-size: 13px; color: var(--text); line-height: 1.7;"></div>
         </div>
       </div>
     </div>
 
     <!-- Scoreboard tab -->
     <div id="tab-scoreboard" style="display:none">
-      <div id="scoreboard-container"><div class="empty-state">Laddar scoreboard...</div></div>
+      <div id="scoreboard-container"><div class="empty-state">Laddar RESULTATLISTA...</div></div>
     </div>
   </div>
 </div>
@@ -412,11 +415,9 @@ function openChallenge(id) {
   document.getElementById("flag-result").textContent = "";
   document.getElementById("attack-status").innerHTML = `<span class="status-ok">TARGET ACQUIRED</span> — ${currentChallenge.points} pts`;
   const resetBtn = document.getElementById("reset-session-btn");
-  if (currentChallenge.multi_turn) {
-    resetBtn.style.display = "inline-block";
-  } else {
-    resetBtn.style.display = "none";
-  }
+  resetBtn.style.display = "inline-block"; 
+  document.getElementById("explanation-box").style.display = "none";
+  document.getElementById("explanation-text").textContent = "";
 }
 
 function closeAttack() {
@@ -479,6 +480,10 @@ async function submitFlag() {
       <button class="btn btn-sm" style="margin-top:12px" onclick="closeAttack()">
         &larr; TILLBAKA TILL CHALLENGES
       </button>`;
+    if (currentChallenge.explanation) {
+      document.getElementById("explanation-text").textContent = currentChallenge.explanation;
+      document.getElementById("explanation-box").style.display = "block";
+    }
   } else {
     el.innerHTML = `<span class="msg-fail">✗ ${data.message}</span>`;
   }
@@ -540,7 +545,7 @@ async function resetSession() {
     await fetch(`${API}/reset-session?username=${currentUser}&challenge_id=${currentChallenge.id}`, {
         method: "POST"
     });
-    document.getElementById("output-area").innerHTML = '<div class="msg-system">// Session återställd. Konversationshistorik rensad.</div>';
+    document.getElementById("output-area").innerHTML += '<div class="msg-system">// Session återställd. Konversationshistorik rensad.</div>';
 }
 
 </script>
